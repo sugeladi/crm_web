@@ -96,6 +96,21 @@ angular.module('myApp', [
                 url: '/menpaihao',
                 templateUrl: 'views/menpaihao.html'
             })
+            .state('home.user', {
+                resolve: {
+                    data: function (User, CONFIG) {
+                        return User.get({page: 1, size: CONFIG.limit}).$promise;
+                    }
+                },
+                controller: 'UserCtrl',
+                url: '/user',
+                templateUrl: 'views/user/list.html'
+            })
+            .state('home.createUser', {
+                controller: 'CreateUserCtrl',
+                url: '/createUser',
+                templateUrl: 'views/user/create.html'
+            })
     }])
     .config(['$httpProvider', function ($httpProvider) {
         $httpProvider.interceptors.push([

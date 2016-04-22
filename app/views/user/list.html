@@ -1,0 +1,41 @@
+<div class="col-md-10">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">会员列表</h3>
+        </div>
+        <div class="form-group" style="margin-top: 20px">
+
+        </div>
+
+        <HR style="border:1" width="100%" SIZE=1>
+
+        <table class="table list">
+            <tr>
+                <th class="text-left">名称</th>
+                <th>操作</th>
+            </tr>
+            <tr ng-repeat="c in data.users">
+                <td class="text-left">{{c.name}}</td>
+                <td>
+                    <button class="btn btn-primary btn-xs" ng-click="edit($index)">编辑</button>
+                    <button class="btn btn-primary btn-xs" ng-click="delete($index)">删除</button>
+                </td>
+            </tr>
+        </table>
+        <div class="text-center">
+            <pagination
+                    total-items="data.total" ng-model="user.page"
+                    items-per-page="data.size" class="pagination-sm" boundary-links="true"
+                    max-size="10" rotate="true"
+                    previous-text="上一页" next-text="下一页" first-text="首页" last-text="末页">
+            </pagination>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-offset-10">
+    <a ui-sref="home.createUser" class="btn btn-primary glyphicon glyphicon-plus" role="button">添加</a>
+    <!--<button type="button" class="btn btn-primary fa fa-file-excel-o"-->
+    <!--ng-if="me.isAdmin" ng-click="excelConsulate()"> 导入领事-->
+    <!--</button>-->
+</div>

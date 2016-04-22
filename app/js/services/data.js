@@ -65,6 +65,12 @@ angular.module('myApp.services')
         });
         return Org;
     }])
+    .factory('User', ['$resource', function ($resource) {
+        var User = $resource('/admin/user/:id', {id: '@id'}, {
+            'update': {method: 'POST'}
+        });
+        return User;
+    }])
 ;
 
 
