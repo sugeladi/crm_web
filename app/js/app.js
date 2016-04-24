@@ -19,6 +19,9 @@ angular.module('myApp', [
     .constant('CONFIG', {
         limit: 10
     })
+    .constant('USER_LEN', {
+        MOBILE: 11,
+    })
     .constant('AUTH_EVENTS', {
         loginNeeded: 'auth-login-needed',
         loginSuccess: 'auth-login-success',
@@ -97,19 +100,14 @@ angular.module('myApp', [
                 templateUrl: 'views/menpaihao.html'
             })
             .state('home.user', {
+                url: '/user',
                 resolve: {
-                    data: function (User, CONFIG) {
-                        return User.get({page: 1, size: CONFIG.limit}).$promise;
+                    data: function (User) {
+                        return User.get().$promise;
                     }
                 },
-                controller: 'UserCtrl',
-                url: '/user',
+                controller: 'listUserCtrl',
                 templateUrl: 'views/user/list.html'
-            })
-            .state('home.createUser', {
-                controller: 'CreateUserCtrl',
-                url: '/createUser',
-                templateUrl: 'views/user/create.html'
             })
     }])
     .config(['$httpProvider', function ($httpProvider) {

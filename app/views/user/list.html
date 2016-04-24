@@ -1,41 +1,49 @@
 <div class="col-md-10">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">会员列表</h3>
-        </div>
-        <div class="form-group" style="margin-top: 20px">
+    <tabset>
+        <tab heading="会员" active="tabset.list" select="selectTab()">
+            <table class="table list text_va_middle">
+                <tr>
+                    <th>序号</th>
+                    <th>姓名</th>
+                    <th>手机号</th>
+                    <th width="100px">操作</th>
+                </tr>
+                <tr ng-repeat="a in data.data">
+                    <td class="word-wrap">{{$index + 1}}</td>
+                    <td class="word-wrap">
+                        {{a.name}}
+                    </td>
+                    <td class="word-wrap">
+                        {{a.mobile}}
+                    </td>
+                    <td width="320px">
+                        <button class="btn btn-primary btn-sm fa fa-pencil-square-o" ng-click="edit($index)">
+                            编辑
+                        </button>
+                        <button class="btn btn-danger btn-sm fa fa-trash-o" ng-click="remove($index)">
+                            删除
+                        </button>
+                    </td>
+                    <div style="clear: both;"></div>
+                </tr>
+            </table>
+            <div class="text-center">
+                <pagination
+                        total-items="data.total" ng-model="user.page" items-per-page="data.size"
+                        max-size="10" class="pagination-sm" boundary-links="true" rotate="true"
+                        previous-text="上一页" next-text="下一页" first-text="首页" last-text="末页">
+                </pagination>
+            </div>
+        </tab>
 
-        </div>
+        <tab heading="创建" active="tabset.create" ng-show="tabset.create">
+            <div ng-include="'views/user/create.html'"></div>
+        </tab>
 
-        <HR style="border:1" width="100%" SIZE=1>
-
-        <table class="table list">
-            <tr>
-                <th class="text-left">名称</th>
-                <th>操作</th>
-            </tr>
-            <tr ng-repeat="c in data.users">
-                <td class="text-left">{{c.name}}</td>
-                <td>
-                    <button class="btn btn-primary btn-xs" ng-click="edit($index)">编辑</button>
-                    <button class="btn btn-primary btn-xs" ng-click="delete($index)">删除</button>
-                </td>
-            </tr>
-        </table>
-        <div class="text-center">
-            <pagination
-                    total-items="data.total" ng-model="user.page"
-                    items-per-page="data.size" class="pagination-sm" boundary-links="true"
-                    max-size="10" rotate="true"
-                    previous-text="上一页" next-text="下一页" first-text="首页" last-text="末页">
-            </pagination>
-        </div>
-    </div>
+    </tabset>
 </div>
-
 <div class="col-md-offset-10">
-    <a ui-sref="home.createUser" class="btn btn-primary glyphicon glyphicon-plus" role="button">添加</a>
-    <!--<button type="button" class="btn btn-primary fa fa-file-excel-o"-->
-    <!--ng-if="me.isAdmin" ng-click="excelConsulate()"> 导入领事-->
-    <!--</button>-->
+    <div class="dropdown">
+        <a href="javascript:;" ng-click="create()" class="btn btn-primary fa fa-plus">添加会员</a>
+    </div>
 </div>

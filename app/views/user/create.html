@@ -1,10 +1,8 @@
-<div class="setting">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title">添加会员</h3>
-        </div>
+<div>
+    <div class="panel panel-default tab-panel">
         <div class="panel-body">
-            <form name="createUserForm" class="form-horizontal" role="form" ng-submit="create(user)">
+
+            <form name="frm" class="form-horizontal" role="form" ng-submit="frm.$valid && sub()">
 
                 <div class="form-group"
                      ng-class="{'has-error' : createUserForm.name.$dirty && createUserForm.name.$invalid, 'has-success' : createUserForm.name.$dirty && createUserForm.name.$valid}">
@@ -68,14 +66,16 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-offset-3 col-md-6" style="text-align: center">
-                        <button class="btn btn-primary" type="submit" ng-disabled="createUserForm.$invalid">
-                            <i class="fa" ng-class="{'fa-check': !updating, 'fa-spinner fa-spin': updating}"></i>
-                            保存
+                    <div class="col-md-offset-3 col-md-6">
+                        <button class="btn btn-primary" type="submit" ng-disabled="!frm.$valid">
+                            <i class="fa" ng-class="{'fa-check': !loading, 'fa-spinner fa-spin': loading}"></i>
+                            提交
                         </button>
+
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
