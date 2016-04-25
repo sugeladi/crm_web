@@ -6,7 +6,7 @@
 
                 <div class="form-group"
                      ng-class="{'has-error' : createUserForm.name.$dirty && createUserForm.name.$invalid, 'has-success' : createUserForm.name.$dirty && createUserForm.name.$valid}">
-                    <label for="name" class="col-sm-1 control-label">姓名</label>
+                    <label for="name" class="col-sm-2 control-label">姓名</label>
 
                     <div class="col-sm-5">
                         <input type="text" class="form-control" id="name" name="name"
@@ -16,19 +16,21 @@
                 </div>
 
                 <div class="form-group"
-                     ng-class="{'has-error' : createUserForm.mobile.$dirty && createUserForm.mobile.$invalid, 'has-success' : createUserForm.mobile.$dirty && createUserForm.mobile.$valid}">
-                    <label for="mobile" class="col-sm-1 control-label">手机号</label>
+                     ng-class="{'has-error' : (createUserForm.mobile.$dirty && createUserForm.mobile.$invalid) || show_user_mobile_err, 'has-success' : createUserForm.mobile.$dirty && createUserForm.mobile.$valid && !show_user_mobile_err}">
+                    <label for="mobile" class="col-sm-2 control-label">手机号</label>
 
                     <div class="col-sm-5">
                         <input type="text" class="form-control" id="mobile" name="mobile"
                                placeholder="手机号"
-                               ng-model="user.mobile">
+                               ng-model="user.mobile" required>
+                        <span class="text-danger"
+                              ng-show="show_user_mobile_err">手机号必须是{{USER_LEN.MOBILE}}位.</span>
                     </div>
                 </div>
 
                 <div class="form-group"
                      ng-class="{'has-error' : createUserForm.address.$dirty && createUserForm.address.$invalid, 'has-success' : createUserForm.address.$dirty && createUserForm.address.$valid}">
-                    <label for="address" class="col-sm-1 control-label">地址</label>
+                    <label for="address" class="col-sm-2 control-label">地址</label>
 
                     <div class="col-sm-5">
                         <input type="text" class="form-control" id="address" name="address"
@@ -39,7 +41,7 @@
 
                 <div class="form-group"
                      ng-class="{'has-error' : createUserForm.desc.$dirty && createUserForm.desc.$invalid, 'has-success' : createUserForm.desc.$dirty && createUserForm.desc.$valid}">
-                    <label for="desc" class="col-sm-1 control-label">备注</label>
+                    <label for="desc" class="col-sm-2 control-label">备注</label>
 
                     <div class="col-sm-5">
                         <input type="text" class="form-control" id="desc" name="desc"
@@ -50,7 +52,7 @@
 
                 <div class="form-group"
                      ng-class="{'has-error' : frm.sex.$dirty && frm.sex.$invalid, 'has-success' : frm.sex.$dirty && frm.sex.$valid}">
-                    <label class="col-sm-1 control-label">性别</label>
+                    <label class="col-sm-2 control-label">性别</label>
 
                     <div class="col-sm-9">
                         <label class="radio-inline">
