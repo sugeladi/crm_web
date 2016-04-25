@@ -6,6 +6,7 @@
                     <th>序号</th>
                     <th>姓名</th>
                     <th>手机号</th>
+                    <th>地址</th>
                     <th width="100px">操作</th>
                 </tr>
                 <tr ng-repeat="a in data.data">
@@ -15,6 +16,9 @@
                     </td>
                     <td class="word-wrap">
                         {{a.mobile}}
+                    </td>
+                    <td class="word-wrap">
+                        {{a.address}}
                     </td>
                     <td width="320px">
                         <button class="btn btn-primary btn-sm fa fa-pencil-square-o" ng-click="edit($index)">
