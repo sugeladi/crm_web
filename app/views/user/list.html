@@ -1,7 +1,21 @@
 <div class="col-md-10">
     <tabset>
         <tab heading="会员" active="tabset.list" select="selectTab()">
-            <table class="table list text_va_middle">
+            <form class="navbar-form navbar-left" role="search" ng-submit="search()">
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="user.name" placeholder="姓名" style="width: 150px">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="user.mobile" placeholder="手机号"
+                           style="width: 150px">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" ng-model="user.address" placeholder="地址"
+                           style="width: 150px">
+                </div>
+                <button type="submit" class="btn btn-primary">搜索</button>
+            </form>
+            <table class="table list text_va_middle" style="border: 1px solid #ddd;">
                 <tr>
                     <th>序号</th>
                     <th>姓名</th>

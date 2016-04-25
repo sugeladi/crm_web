@@ -19,9 +19,23 @@ angular.module('myApp.controllers')
 
         var refresh = function (page) {
             var SPEC = {page: page, size: CONFIG.limit};
+            if ($scope.user.name) {
+                SPEC.name = $scope.user.name;
+            }
+            if ($scope.user.mobile) {
+                SPEC.mobile = $scope.user.mobile;
+            }
+            if ($scope.user.address) {
+                SPEC.address = $scope.user.address;
+            }
+            console.log("SPEC", SPEC)
             var d = User.list(SPEC, function () {
                 $scope.data = d;
             });
+        };
+
+        $scope.search = function () {
+            refresh($scope.user.page);
         };
 
         $scope.create = function () {
