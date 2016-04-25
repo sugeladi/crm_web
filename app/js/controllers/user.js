@@ -56,7 +56,6 @@ angular.module('myApp.controllers')
         $scope.sub = function () {
             $scope.USER_LEN = USER_LEN;
             $scope.show_user_mobile_err = $scope.user.mobile.length != USER_LEN.MOBILE;
-            console.log("show_user_mobile_err", $scope.show_user_mobile_err)
             if ($scope.show_user_mobile_err) {
                 return;
             }
@@ -68,7 +67,7 @@ angular.module('myApp.controllers')
                 if (_copy.id == null) {
                     $scope.data.data.push(data);
                 }
-                $scope.user = {};
+                $scope.reset();
             }, function (data) {
                 Alert.alert(data.data, true);
             });
