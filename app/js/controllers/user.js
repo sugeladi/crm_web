@@ -38,6 +38,16 @@ angular.module('myApp.controllers')
             refresh($scope.user.page);
         };
 
+        $scope.reset = function () {
+            $scope.user = {
+                page: 1
+            };
+            var SPEC = {page: $scope.user.page, size: CONFIG.limit};
+            var d = User.list(SPEC, function () {
+                $scope.data = d;
+            });
+        };
+
         $scope.create = function () {
             $scope.tabset = {create: true};
             $scope.user = {};
@@ -58,6 +68,7 @@ angular.module('myApp.controllers')
                 if (_copy.id == null) {
                     $scope.data.data.push(data);
                 }
+                $scope.user = {};
             }, function (data) {
                 Alert.alert(data.data, true);
             });
